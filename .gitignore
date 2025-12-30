@@ -26,3 +26,6 @@ htmlcov/
 # Otros
 *.log
 .DS_Store
+
+# Claude Code
+.claude/
