@@ -51,7 +51,7 @@ jobs:
             --service-account emsa-gestion-turnos-api@${{ env.PROJECT_ID }}.iam.gserviceaccount.com \
             --add-cloudsql-instances ${{ env.PROJECT_ID }}:${{ env.REGION }}:emsa-gestion-turnos-db \
             --set-secrets DATABASE_URL=database-url:latest,SECRET_KEY=jwt-secret:latest \
-            --set-env-vars ENVIRONMENT=production,DEBUG=False,CORS_ORIGINS=https://emsa-gestion-turnos.web.app \
+            --set-env-vars "^@^ENVIRONMENT=production@DEBUG=False@CORS_ORIGINS=https://emsa-gestion-turnos.web.app,https://emsa-gestion-turnos.firebaseapp.com" \
             --min-instances 0 \
             --max-instances 3 \
             --memory 512Mi \
