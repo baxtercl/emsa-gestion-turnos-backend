@@ -1,0 +1,35 @@
+name: PR Check
+
+on:
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'app/**'
+      - 'requirements.txt'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install black isort flake8
+
+      - name: Check Black formatting
+        run: black --check app/
+
+      - name: Check isort imports
+        run: isort --check-only app/
+
+      - name: Run flake8 linting
+        run: flake8 app/
